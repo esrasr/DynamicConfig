@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: db1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  servicea.api:
+    build:
+      context: .
+      dockerfile: ServiceA.Api/Dockerfile
+    container_name: servicea-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=postgres;Username=postgres;Password=db1234"
+      DynamicConfig__ApplicationName: "SERVICE-A"
+      DynamicConfig__RefreshTimerIntervalInMs: "10000"
+    ports:
+      - "5000:8080"
+
+  serviceb.api:
+    build:
+      context: .
+      dockerfile: ServiceB.Api/Dockerfile
+    container_name: serviceb-api
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=postgres;Username=postgres;Password=db1234"
+      DynamicConfig__ApplicationName: "SERVICE-B"
+      DynamicConfig__RefreshTimerIntervalInMs: "10000"
+    ports:
+      - "5001:8080"
