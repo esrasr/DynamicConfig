@@ -130,51 +130,6 @@ Each service can be configured with:
 
 ### ServiceA.Api (Port 5000) - Configuration Management API
 
-#### CRUD Operations for Configuration Management
-
-**1. Get All Configurations**
-```http
-GET /api/configs?app=SERVICE-A
-GET /api/configs?app=SERVICE-B
-```
-
-**2. Get Configuration by ID**
-```http
-GET /api/configs/{id}?app=SERVICE-A
-GET /api/configs/{id}?app=SERVICE-B
-```
-
-**3. Create New Configuration**
-```http
-POST /api/configs?app=SERVICE-A
-Content-Type: application/json
-
-{
-  "name": "test1",
-  "type": "String",
-  "value": "Hello World",
-  "isActive": true
-}
-```
-
-**4. Update Configuration**
-```http
-PUT /api/configs/{id}?app=SERVICE-A
-Content-Type: application/json
-
-{
-  "name": "test1",
-  "type": "String", 
-  "value": "Updated Value",
-  "isActive": true
-}
-```
-
-**5. Delete Configuration**
-```http
-DELETE /api/configs/{id}?app=SERVICE-A
-```
-
 #### Configuration Access Endpoints
 
 **Get Configuration Value**
