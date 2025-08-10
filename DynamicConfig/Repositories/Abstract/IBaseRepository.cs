@@ -18,5 +18,5 @@ namespace DynamicConfig.Repositories.Abstract
         void Delete(int id);
     }
 
-    
+
 }

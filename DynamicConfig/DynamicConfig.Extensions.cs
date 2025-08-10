@@ -60,5 +60,3 @@ public static class DynamicConfigMigrationExtensions
         }
     }
 }
-    
-

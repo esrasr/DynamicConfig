@@ -1,0 +1,52 @@
+repos:
+  - repo: local
+    hooks:
+      - id: dotnet-format
+        name: dotnet format
+        entry: dotnet format --folder --no-restore
+        language: system
+        pass_filenames: false
+        stages: [commit]
+        
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-added-large-files
+      - id: detect-private-key
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.40.0
+    hooks:
+      - id: markdownlint
+        args: ["--disable", "MD013"]  
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+
+  - repo: local
+    hooks:
+      - id: dotnet-tool-restore
+        name: dotnet tool restore
+        entry: dotnet tool restore
+        language: system
+        pass_filenames: false
+        stages: [commit]
+
+      - id: dotnet-format
+        name: dotnet format (verify)
+        entry: dotnet format --verify-no-changes --no-restore
+        language: system
+        pass_filenames: false
+        stages: [commit]
+
+      - id: dotnet-build
+        name: dotnet build (no restore)
+        entry: dotnet build --configuration Release --nologo --no-restore
+        language: system
+        pass_filenames: false
+        stages: [commit]

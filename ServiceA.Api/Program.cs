@@ -21,8 +21,8 @@ if (string.IsNullOrWhiteSpace(connStr))
 
 builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 {
-    opt.UseNpgsql(connStr);    
-   
+    opt.UseNpgsql(connStr);
+
 });
 
 builder.Services.AddDynamicConfig(connStr);
@@ -99,7 +99,7 @@ app.MapGet("/weatherforecast", () =>
 });
 var jsonOpts = new JsonSerializerOptions
 {
-    DefaultIgnoreCondition = JsonIgnoreCondition.Never 
+    DefaultIgnoreCondition = JsonIgnoreCondition.Never
 };
 app.MapGet("/cfg", () => Results.BadRequest("key is required"));
 app.MapGet("/cfg/{key}", (IConfigurationReader reader, string key) =>
@@ -109,8 +109,8 @@ app.MapGet("/cfg/{key}", (IConfigurationReader reader, string key) =>
     return Results.Json(new { key, value = val, runtimeType }, jsonOpts);
 });
 
-app.UseStaticFiles();   
-app.MapRazorPages();  
+app.UseStaticFiles();
+app.MapRazorPages();
 
 app.Run();
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

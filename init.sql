@@ -14,4 +14,4 @@ VALUES
     (1, 'SiteName', 'string', 'soty.io', TRUE, 'SERVICE-A'),
     (2, 'IsBasketEnabled', 'bool', '1', TRUE, 'SERVICE-B'),
     (3, 'MaxItemCount', 'int', '50', FALSE, 'SERVICE-A')
-ON CONFLICT ("Id") DO NOTHING; 
+ON CONFLICT ("Id") DO NOTHING;

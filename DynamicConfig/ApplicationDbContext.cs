@@ -20,7 +20,7 @@ namespace DynamicConfig
             modelBuilder.Entity<Config>(b =>
             {
                 b.HasKey(x => x.Id);
-                b.Property(x => x.Id).UseIdentityByDefaultColumn();                                                                    
+                b.Property(x => x.Id).UseIdentityByDefaultColumn();
                 b.HasIndex(x => new { x.ApplicationName, x.Name }).IsUnique();
             });
         }

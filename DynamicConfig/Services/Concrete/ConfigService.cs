@@ -22,7 +22,7 @@ namespace DynamicConfig.Services.Concrete
             return _configRepo.GetConfigByValue(name, appName);
         }
 
-   
+
 
         public T GetValue<T>(string name, string appName)
         {
@@ -46,8 +46,8 @@ namespace DynamicConfig.Services.Concrete
         }
         public Config Add(ConfigDto entity, string appName)
         {
-      
-    
+
+
             return _configRepo.Add(entity, appName);
         }
         public Config Update(int id, ConfigDto entity, string appName)
@@ -74,7 +74,7 @@ namespace DynamicConfig.Services.Concrete
                 if (target == typeof(string))
                     return (T)(object)Convert.ToString(parsed, CultureInfo.InvariantCulture)!;
 
-                if (parsed is string s) 
+                if (parsed is string s)
                     return (T)Convert.ChangeType(s, target, CultureInfo.InvariantCulture);
 
                 return (T)Convert.ChangeType(parsed, target, CultureInfo.InvariantCulture);
@@ -112,4 +112,3 @@ namespace DynamicConfig.Services.Concrete
         }
     }
 }
-

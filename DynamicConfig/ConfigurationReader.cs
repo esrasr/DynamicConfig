@@ -11,7 +11,7 @@ using static DynamicConfig.ConfigurationReader;
 
 namespace DynamicConfig
 {
-  
+
     public class ConfigurationReader: IConfigurationReader
     {
         private readonly string _applicationName;
@@ -25,8 +25,8 @@ namespace DynamicConfig
         public ConfigurationReader(string applicationName, string connectionString, int refreshTimerIntervalInMs)
         {
             var opts = new DbContextOptionsBuilder<ApplicationDbContext>()
-                    .UseNpgsql(connectionString)                      
-                    // .UseSqlServer(connectionString)             
+                    .UseNpgsql(connectionString)
+                    // .UseSqlServer(connectionString)
                     .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
                     .Options;
             _ctx = new ApplicationDbContext(opts);
@@ -49,7 +49,7 @@ namespace DynamicConfig
         private static string BuildCacheKey( string app, string key , string cacheName = "cfg")
             => $"{cacheName}:{app}:{key}";
 
-       
+
         public T GetValue<T>(string key)
         {
             var cfgCacheKey = BuildCacheKey(_applicationName, key);
@@ -81,15 +81,15 @@ namespace DynamicConfig
                 {
                     if (snapshotValue != null)
                         return (T)snapshotValue;
-                    
+
                 }
             }
             return default!;
 
         }
 
-   
-        
+
+
 
     }
 }

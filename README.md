@@ -78,7 +78,7 @@ The system comes with pre-configured test data:
 # Get SiteName for SERVICE-A
 curl http://localhost:5000/cfg/SiteName
 
-# Get IsBasketEnabled for SERVICE-B  
+# Get IsBasketEnabled for SERVICE-B
 curl http://localhost:5001/cfg/IsBasketEnabled
 
 # Get MaxItemCount for SERVICE-A
@@ -194,10 +194,10 @@ Services reference shared projects:
    ```bash
    cd DynamicConfig
    dotnet run
-   
+
    cd ../ServiceA.Api
    dotnet run
-   
+
    cd ../ServiceB.Api
    dotnet run
    ```
@@ -270,4 +270,4 @@ This project is licensed under the MIT License.
 
 ## Support
 
-For support and questions, please open an issue in the repository. 
+For support and questions, please open an issue in the repository.
