@@ -17,6 +17,4 @@ namespace DynamicConfig.Repositories.Abstract
         void Update(TEntity entity);
         void Delete(int id);
     }
-
-
 }

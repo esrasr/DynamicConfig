@@ -21,7 +21,6 @@ public class IndexModel : PageModel
         return Page();
     }
 
-    // ---- Create (parametre ile bağla) ----
     public IActionResult OnPostCreate([FromForm] CreateInput createForm, [FromForm] string? app)
     {
         if (!ModelState.IsValid)
@@ -42,7 +41,6 @@ public class IndexModel : PageModel
         return RedirectToPage();
     }
 
-    // ---- Update (parametre ile bağla) ----
     public IActionResult OnPostUpdate([FromForm] UpdateInput updateForm, [FromForm] string? app)
     {
 
@@ -60,7 +58,6 @@ public class IndexModel : PageModel
         return RedirectToPage();
     }
 
-    // ---- Delete (parametre ile bağla) ----
     public IActionResult OnPostDelete([FromForm] int id, [FromForm] string? app)
     {
         var affected = _svc.Delete(id, App);
